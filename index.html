@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Filmes</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="shadow-effects">
+        <h1>Filmoteca - Tela de Cadastro</h1>
+    </header>
+
+    <form>
+        <table class="shadow-effects">
+            <tr>
+                <td>
+                    <label for="movieName">Nome do filme</label>
+                </td>
+                <td>
+                    <input type="text" id="movieName">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="movieDesc">Descrição</label>
+                </td>
+                <td>
+                    <input type="text" id="movieDesc">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="selectGender">Gênero</label>
+                </td>
+                <td>
+                    <select id="selectGender">
+                        <option value="action">Ação</option>
+                        <option value="drama">Drama</option>
+                        <option value="adventure">Aventura</option>
+                        <option value="terror">Terror</option>
+                        <option value="thriller">Suspense</option>
+                        <option value="kids">Infantil</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="selectAge">Classificação</label></td>
+                <td>
+                    <select id="selectAge">
+                        <option value="livre">Livre</option>
+                        <option value="12 anos">+12</option>
+                        <option value="16 anos">+16</option>
+                        <option value="18 anos">+18</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="inputQuantity">Quantidade</label>
+                </td>
+                <td>
+                    <input type="number" id="inputQuantity">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="inputDate">Data da compra</label>
+                </td>
+                <td>
+                    <input type="date" id="inputDate">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" id="buttonSubmit" value="Cadastrar">
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
