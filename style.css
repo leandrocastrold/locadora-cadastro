@@ -3,6 +3,37 @@
     --font-color : rgb(233, 233, 233);
 }
 
+* {
+    box-sizing: border-box;
+}
+
+.popup-wrapper {
+    display:none;
+    background-color: rgba(0,0,0,0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.popup {
+    font-family: Arial;
+    text-align: center;
+    width: 100%;
+    max-width: 300px;
+    margin: 10% auto;
+    padding: 20px;
+    background: white;
+    position: relative;
+}
+
+.popup-close {
+    position:absolute;
+    top:5px;
+    right: 10px;
+    cursor: pointer;
+}
 header {
     height: 70px;
     background-color: darkcyan;
@@ -15,7 +46,14 @@ h1 {
     text-shadow: 1px 1px 1px black;
 }
 
+#container-view {
+    float: right;
+    padding: 20px 20px 20px 0;
+    font-weight: bold;
+}
+
 table {
+    clear: both;
     margin-top: 80px;
     margin-left: auto;
     margin-right: auto;
@@ -43,7 +81,7 @@ table {
     width: 80px;
 }
 
-#buttonSubmit {
+.buttonStyle {
     margin-top: 15px;
     margin-left: auto;
     margin-right: auto;

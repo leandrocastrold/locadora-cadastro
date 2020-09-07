@@ -1,5 +1,10 @@
 const buttonSubmit = document.querySelector('#buttonSubmit');
-const moviesList = [];
+const buttonView = document.querySelector('#buttonView');
+const popup = document.querySelector('.popup-wrapper');
+const closePopupButton = document.querySelector('.popup-close');
+const viewPanelInfo = document.querySelector('#moviesInfo');
+
+let moviesList = [];
 
 const registerItem = () => {
 
@@ -25,13 +30,12 @@ const registerItem = () => {
             quantity: inputQuantity.value,
             date: inputDate.value
         };
-        moviesList.push(newMovie)
-
-        console.log(moviesList)
+      
+        loadSavedMovies();
+        insertNewMovieintoList(newMovie)
+        saveMoviesList(moviesList);
+      
     }
-
-
-
 
 }
 
@@ -48,7 +52,53 @@ const validateData = (inputsArray) => {
     return true;
 }
 
+const loadSavedMovies = () => {
+    let list = localStorage.getItem('movies-saved')
+    
+    if (list == undefined || list == null ) {
+        list = [];
+    } else {
+        list = JSON.parse(list);
+      
+    }
+    viewPanelInfo.innerHTML  = `Filmes Cadastrados: ${list.length}`
+    console.log(list.length)
+}
+
+const insertNewMovieintoList = () => {
+
+}
+
+const saveMovieList = () => {
+
+}
+
+
+
+
+const viewMovieList = () => {
+    popup.style.display = 'block'
+}
+
+
 buttonSubmit.addEventListener("click", (event) => {
     event.preventDefault();
     registerItem();
 })
+
+buttonView.addEventListener('click', () => {
+    viewMovieList();
+
+})
+
+popup.addEventListener('click', event => {
+    const currentClassName = event.target.className;
+    const classNames = ['popup-wrapper', 'popup-close']
+    const shouldClosePopup = classNames.some(name => name === currentClassName);
+
+    if (shouldClosePopup) {
+        popup.style.display = "none"
+    }
+})
+
+loadSavedMovies();

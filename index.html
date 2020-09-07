@@ -14,6 +14,22 @@
         <h1>Filmoteca - Tela de Cadastro</h1>
     </header>
 
+    <div id="container-view">
+        <p id="moviesInfo"></p>
+        <input type="button" class="buttonStyle" id="buttonView"  value="Visualizar">
+    </div>
+    
+    <div class="popup-wrapper">
+     <div class="popup">
+         <div class="popup-close">x</div>
+         <div class="popup-content">
+             <h2>Lista de Filmes Cadastrados</h2>
+             <p>Filmes cadastrados até o momento:</p>
+             <a href="#"></a>
+         </div>
+     </div>
+    </div>
+
     <form>
         <table class="shadow-effects">
             <tr>
@@ -71,12 +87,12 @@
                     <label for="movieDate">Data da compra</label>
                 </td>
                 <td>
-                    <input type="date" id="movieDate" value="1990-12-10">
+                    <input type="date" id="movieDate" value="2020-01-01">
                 </td>
             </tr>
             <tr>
                 <td colspan="2">
-                    <input type="submit" id="buttonSubmit" value="Cadastrar">
+                    <input type="submit" id="buttonSubmit" class="buttonStyle" value="Cadastrar">
                 </td>
             </tr>
         </table>
