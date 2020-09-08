@@ -18,6 +18,10 @@
         <p id="moviesInfo"></p>
         <input type="button" class="buttonStyle" id="buttonView"  value="Visualizar">
     </div>
+    <div id="container-delete">
+        <p>Apagar dados dos filmes</p>
+        <input type="button" class="buttonStyle" id="buttonDelete"  value="Resetar Lista">
+    </div>
     
     <div class="popup-wrapper">
      <div class="popup">
@@ -25,19 +29,20 @@
          <div class="popup-content">
              <h2>Lista de Filmes Cadastrados</h2>
              <p>Filmes cadastrados até o momento:</p>
+             <table id="tbMovies"></table>
              <a href="#"></a>
          </div>
      </div>
     </div>
 
     <form>
-        <table class="shadow-effects">
+        <table class="shadow-effects" id="main-table">
             <tr>
                 <td>
                     <label for="movieName">Nome do filme</label>
                 </td>
                 <td>
-                    <input type="text" id="movieName">
+                    <input type="text" id="movieName" maxlength="40">
                 </td>
             </tr>
             <tr>
@@ -45,7 +50,7 @@
                     <label for="movieDesc">Descrição</label>
                 </td>
                 <td>
-                    <input type="text" id="movieDesc">
+                    <input type="text" id="movieDesc" maxlength="50">
                 </td>
             </tr>
             <tr>

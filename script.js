@@ -1,5 +1,7 @@
 const buttonSubmit = document.querySelector('#buttonSubmit');
 const buttonView = document.querySelector('#buttonView');
+const buttonDelete = document.querySelector('#buttonDelete');
+
 const popup = document.querySelector('.popup-wrapper');
 const closePopupButton = document.querySelector('.popup-close');
 const viewPanelInfo = document.querySelector('#moviesInfo');
@@ -30,11 +32,10 @@ const registerItem = () => {
             quantity: inputQuantity.value,
             date: inputDate.value
         };
-      
+
         loadSavedMovies();
         insertNewMovieintoList(newMovie)
         saveMoviesList(moviesList);
-      
     }
 
 }
@@ -53,43 +54,68 @@ const validateData = (inputsArray) => {
 }
 
 const loadSavedMovies = () => {
-    let list = localStorage.getItem('movies-saved')
-    
-    if (list == undefined || list == null ) {
-        list = [];
+
+    moviesList = localStorage.getItem('movies-saved')
+
+    if (moviesList == undefined || moviesList == null) {
+        moviesList = [];
     } else {
-        list = JSON.parse(list);
-      
+        moviesList = JSON.parse(moviesList);
+
     }
-    viewPanelInfo.innerHTML  = `Filmes Cadastrados: ${list.length}`
-    console.log(list.length)
+    viewPanelInfo.innerHTML = `Filmes Cadastrados: ${moviesList.length}`
+    console.log(moviesList)
 }
 
-const insertNewMovieintoList = () => {
+const insertNewMovieintoList = (movie) => {
 
+    moviesList.push(movie);
 }
 
-const saveMovieList = () => {
+const saveMoviesList = (list) => {
 
+    localStorage.setItem('movies-saved', JSON.stringify(list));
+    alert('Cadastro realizado com sucesso');
 }
-
-
-
 
 const viewMovieList = () => {
+    const moviesTable = document.querySelector('#tbMovies');
+    if (moviesList.length > 0) {
+        moviesTable.innerHTML = '';
+        moviesList.forEach(item => {
+            moviesTable.innerHTML += `<tr>
+                                <td>${item.name}</td>
+                                <td>${item.description}</td>
+                                <td>${item.gender}</td>
+                                <td>${item.age}</td>
+                                <td>${item.quantity}</td>
+                                <td>${item.date}</td>
+                                </tr>`
+        })
+    } else {
+        moviesTable.innerHTML = "A lista está vazia"
+    }
+
     popup.style.display = 'block'
 }
 
 
 buttonSubmit.addEventListener("click", (event) => {
-    event.preventDefault();
+    // event.preventDefault();
     registerItem();
-})
+});
 
 buttonView.addEventListener('click', () => {
     viewMovieList();
 
-})
+});
+
+buttonDelete.addEventListener('click', () => {
+    localStorage.clear();
+    if (confirm("Quer realmente apagar os dados salvos?")) {
+        alert('Os filmes salvos foram apagados!') 
+    }
+});
 
 popup.addEventListener('click', event => {
     const currentClassName = event.target.className;
@@ -101,4 +127,5 @@ popup.addEventListener('click', event => {
     }
 })
 
+//ocalStorage.clear();
 loadSavedMovies();
