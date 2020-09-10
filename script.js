@@ -86,10 +86,12 @@ const viewMovieList = () => {
 
 const fillListOfMovies = (filteredList) => {
     const moviesTable = document.querySelector('#tbMovies');
+    let movieListMaxSize = 4;
     if (filteredList.length > 0) {
         moviesTable.innerHTML = '';
-        filteredList.forEach(item => {
-            moviesTable.innerHTML += `<tr>
+        filteredList.forEach((item, index, array) => {
+            if (index < movieListMaxSize) {
+                moviesTable.innerHTML += `<tr>
                                 <td>${item.name}</td>
                                 <td>${item.description}</td>
                                 <td>${item.gender}</td>
@@ -97,16 +99,24 @@ const fillListOfMovies = (filteredList) => {
                                 <td>${item.quantity}</td>
                                 <td>${item.date}</td>
                                 </tr>`
+            }
         })
     }
     else {
         console.log('Lista Vazia');
+        moviesTable.innerHTML = "Sem filmes cadastrados";
     }
 }
 
 const filterMoviesByCategory = () => {
-    const filteredMovieList = moviesList.filter(({ gender }) => gender === selectCategory.value);
-    console.log(`Lista filtrada ${filteredMovieList}`)
+
+    let filteredMovieList = [];
+
+    if (selectCategory.value !== "Todos") {
+        filteredMovieList = moviesList.filter(({ gender }) => gender === selectCategory.value);
+    } else {
+        filteredMovieList = moviesList;
+    }
     return filteredMovieList
 }
 
