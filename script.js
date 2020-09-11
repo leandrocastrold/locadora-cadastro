@@ -86,12 +86,11 @@ const viewMovieList = () => {
 
 const fillListOfMovies = (filteredList) => {
     const moviesTable = document.querySelector('#tbMovies');
-    let movieListMaxSize = 4;
+
     if (filteredList.length > 0) {
         moviesTable.innerHTML = '';
-        filteredList.forEach((item, index, array) => {
-            if (index < movieListMaxSize) {
-                moviesTable.innerHTML += `<tr>
+        filteredList.forEach(item => {
+            moviesTable.innerHTML += `<tr>
                                 <td>${item.name}</td>
                                 <td>${item.description}</td>
                                 <td>${item.gender}</td>
@@ -99,13 +98,14 @@ const fillListOfMovies = (filteredList) => {
                                 <td>${item.quantity}</td>
                                 <td>${item.date}</td>
                                 </tr>`
-            }
         })
-    }
-    else {
+        
+    } else {
         console.log('Lista Vazia');
         moviesTable.innerHTML = "Sem filmes cadastrados";
+
     }
+
 }
 
 const filterMoviesByCategory = () => {
@@ -122,7 +122,7 @@ const filterMoviesByCategory = () => {
 
 selectCategory.addEventListener('change', () => {
     console.log('hange');
-   fillListOfMovies(filterMoviesByCategory())
+    fillListOfMovies(filterMoviesByCategory())
 })
 
 buttonSubmit.addEventListener("click", (event) => {
@@ -136,7 +136,7 @@ buttonView.addEventListener('click', () => {
 });
 
 buttonDelete.addEventListener('click', () => {
-    
+
     if (confirm("Quer realmente apagar os dados salvos?")) {
         alert('Os filmes salvos foram apagados!')
         localStorage.clear();
