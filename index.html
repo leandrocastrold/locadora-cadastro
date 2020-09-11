@@ -27,30 +27,26 @@
         <div class="popup-header">
             <div class="popup-close">x</div>
             <h2>Lista de Filmes Cadastrados</h2>
+            Categoria:
+            <select id="selectGen">
+               <option value="Todos">Todos</option>
+               <option value="Ação">Ação</option>
+               <option value="Drama">Drama</option>
+               <option value="Aventura">Aventura</option>
+               <option value="Terror">Terror</option>
+               <option value="Suspense">Suspense</option>
+               <option value="Infantil">Infantil</option>
+               <option value="Adulto">Adulto</option>
+            </select>
+           
+         
         </div>
      <div class="popup">
-         
-        
          <div class="popup-content">
-           
-             <p>
-                 Categoria:
-             <select id="selectGen">
-                <option value="Todos">Todos</option>
-                <option value="Ação">Ação</option>
-                <option value="Drama">Drama</option>
-                <option value="Aventura">Aventura</option>
-                <option value="Terror">Terror</option>
-                <option value="Suspense">Suspense</option>
-                <option value="Infantil">Infantil</option>
-                <option value="Adulto">Adulto</option>
-             </select>
-            </p>
-             <p>Filmes cadastrados até o momento:</p>
              <table id="tbMovies"></table>
-             
          </div>
      </div>
+
     </div>
 
     <form>
@@ -60,7 +56,7 @@
                     <label for="movieName">Nome do filme</label>
                 </td>
                 <td>
-                    <input type="text" id="movieName" maxlength="40">
+                    <input type="text" id="movieName" maxlength="40" autofocus>
                 </td>
             </tr>
             <tr>

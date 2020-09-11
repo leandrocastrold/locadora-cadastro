@@ -10,6 +10,29 @@ const viewPanelInfo = document.querySelector('#moviesInfo');
 
 let moviesList = [];
 
+const loadSavedMovies = () => {
+
+    moviesList = localStorage.getItem('movies-saved')
+
+    if (moviesList == undefined || moviesList == null) {
+        moviesList = [];
+    } else {
+        moviesList = JSON.parse(moviesList);
+    }
+    viewPanelInfo.innerHTML = `Filmes Cadastrados: ${moviesList.length}`
+    console.log(moviesList)
+}
+
+const insertNewMovieintoList = (movie) => {
+    moviesList.push(movie);
+}
+
+const saveMoviesList = (list) => {
+
+    localStorage.setItem('movies-saved', JSON.stringify(list));
+    alert('Cadastro realizado com sucesso');
+}
+
 const registerItem = () => {
 
     const inputName = document.querySelector('#movieName');
@@ -55,31 +78,6 @@ const validateData = (inputsArray) => {
     return true;
 }
 
-const loadSavedMovies = () => {
-
-    moviesList = localStorage.getItem('movies-saved')
-
-    if (moviesList == undefined || moviesList == null) {
-        moviesList = [];
-    } else {
-        moviesList = JSON.parse(moviesList);
-
-    }
-    viewPanelInfo.innerHTML = `Filmes Cadastrados: ${moviesList.length}`
-    console.log(moviesList)
-}
-
-const insertNewMovieintoList = (movie) => {
-
-    moviesList.push(movie);
-}
-
-const saveMoviesList = (list) => {
-
-    localStorage.setItem('movies-saved', JSON.stringify(list));
-    alert('Cadastro realizado com sucesso');
-}
-
 const viewMovieList = () => {
     popup.style.display = 'block'
 }
@@ -99,13 +97,11 @@ const fillListOfMovies = (filteredList) => {
                                 <td>${item.date}</td>
                                 </tr>`
         })
-        
+
     } else {
         console.log('Lista Vazia');
         moviesTable.innerHTML = "Sem filmes cadastrados";
-
     }
-
 }
 
 const filterMoviesByCategory = () => {
@@ -126,7 +122,6 @@ selectCategory.addEventListener('change', () => {
 })
 
 buttonSubmit.addEventListener("click", (event) => {
-    // event.preventDefault();
     registerItem();
 });
 
@@ -136,7 +131,6 @@ buttonView.addEventListener('click', () => {
 });
 
 buttonDelete.addEventListener('click', () => {
-
     if (confirm("Quer realmente apagar os dados salvos?")) {
         alert('Os filmes salvos foram apagados!')
         localStorage.clear();
